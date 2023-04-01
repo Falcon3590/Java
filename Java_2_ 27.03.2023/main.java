@@ -1,6 +1,7 @@
-// import java.io.BufferedReader;
-// import java.io.FileReader;
-// import java.lang.System.Logger;
+// 1. Дана строка sql-запроса "select * from students where ". Сформируйте часть WHERE этого запроса, используя StringBuilder. Данные для фильтрации приведены ниже в виде json-строки.
+// Если значение null, то параметр не должен попадать в запрос.
+
+// Параметры для фильтрации: {"name":"Ivanov", "country":"Russia", "city":"Moscow", "age":"null"}
 
 // import java.util.HashMap;
 // import java.util.Map;
@@ -29,7 +30,7 @@
 //     }
 // }
 
-// 2.
+// 2. Реализуйте алгоритм сортировки пузырьком числового массива, результат после каждой итерации запишите в лог-файл.
 
 // import java.util.Random;
 // import java.util.Arrays;
@@ -77,12 +78,23 @@
 // }
 // }
 
-// 3.
+
+// 3. ** Дана json-строка (можно сохранить в файл и читать из файла)
+// [{"фамилия":"Иванов","оценка":"5","предмет":"Математика"},{"фамилия":"Петрова","оценка":"4","предмет":"Информатика"},{"фамилия":"Краснов","оценка":"5","предмет":"Физика"}]
+// Написать метод(ы), который распарсит json и, используя StringBuilder, создаст строки вида: Студент [фамилия] получил [оценка] по предмету [предмет].
+// Пример вывода:
+// Студент Иванов получил 5 по предмету Математика.
+// Студент Петрова получил 4 по предмету Информатика.
+// Студент Краснов получил 5 по предмету Физика.
+
+// import java.io.BufferedReader;
+// import java.io.FileReader;
 
 // public class main {
 
 //     public static void main(String[] args) throws Exception {
-//         String[] arrayData = ReadLineFromFile("C:/Users/vi/Desktop/Учеба в GB/Java/Java_2_ 27.03.2023/dataStudents.txt");
+//         String[] arrayData = ReadLineFromFile(
+//                 "C:/Users/vi/Desktop/Учеба в GB/Java/Java_2_ 27.03.2023/dataStudents.txt");
 //         for (int i = 0; i < arrayData.length; i++) {
 //             System.out.println(PrintLine(arrayData[i]));
 //         }
@@ -105,109 +117,114 @@
 //         }
 //         return result;
 //     }
+
 //     // Считывю строки из файла
-//     public static String [] ReadLineFromFile(String pathway) throws Exception {
+//     public static String[] ReadLineFromFile(String pathway) throws Exception {
 //         BufferedReader br = new BufferedReader(new FileReader(pathway));
 //         String str;
 //         int size = 0;
 //         while ((str = br.readLine()) != null) {
-//             size +=1;
-//             }
+//             size += 1;
+//         }
 //         br.close();
-//         String [] listData = new String [size];
+//         String[] listData = new String[size];
 
 //         int i = 0;
 //         BufferedReader br1 = new BufferedReader(new FileReader(pathway));
 //         while ((str = br1.readLine()) != null) {
 //             listData[i] = str;
 //             i += 1;
-//             }
+//         }
 //         br1.close();
 //         return listData;
 
-//     }   
+//     }
 
 // }
 
-// 4.
 
-import java.io.IOException;
-import java.util.Scanner;
-import java.util.logging.FileHandler;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import java.util.logging.SimpleFormatter;
 
-public class main {
-    static Scanner scanner = new Scanner(System.in);
+// // 4. * К калькулятору из предыдущего дз добавить логирование.
 
-    public static void main(String[] args) throws SecurityException, IOException {
-        Logger log = Logger.getLogger(main.class.getName());
-        FileHandler fh = new FileHandler("logger2.log");
-        log.addHandler(fh);
-        fh.setFormatter(new SimpleFormatter());
-        int N1 = Number();
-        log.setLevel(Level.INFO);
-        log.log(Level.INFO, String.format("Первое число: " + N1));
-        int N2 = Number();
-        log.setLevel(Level.INFO);
-        log.log(Level.INFO, String.format("Второе число: " + N2));
-        char operation = Operation();
-        log.setLevel(Level.INFO);
-        log.log(Level.INFO, String.format("Операция: " + operation));
-        int result = calc(N1, N2, operation);
-        log.setLevel(Level.INFO);
-        log.log(Level.INFO, String.format("Произвел расчет"));
-        System.out.println("Результат = " + result);
-        log.setLevel(Level.INFO);
-        log.log(Level.INFO, String.format("Вывел результат: " + result));
-    }
+// import java.io.IOException;
+// import java.util.Scanner;
+// import java.util.logging.FileHandler;
+// import java.util.logging.Level;
+// import java.util.logging.Logger;
+// import java.util.logging.SimpleFormatter;
 
-    public static int Number() {
-        System.out.println("Введите число:");
-        int N;
-        if (scanner.hasNextInt()) {
-            N = scanner.nextInt();
-        } else {
-            System.out.println("Введены не верные данные, введите только цифры.");
-            scanner.next();
-            N = Number();
-        }
-        return N;
-    }
+// public class main {
+// static Scanner scanner = new Scanner(System.in);
 
-    public static char Operation() {
-        System.out.println("Введите операцию:");
-        char operation;
-        if (scanner.hasNext()) {
-            operation = scanner.next().charAt(0);
-        } else {
-            System.out.println("Введены не верные данные, введите только цифры.");
-            scanner.next();
-            operation = Operation();
-        }
-        return operation;
-    }
+// public static void main(String[] args) throws SecurityException, IOException
+// {
+// Logger log = Logger.getLogger(main.class.getName());
+// FileHandler fh = new FileHandler("logger2.log");
+// log.addHandler(fh);
+// fh.setFormatter(new SimpleFormatter());
+// int N1 = Number();
+// log.setLevel(Level.INFO);
+// log.log(Level.INFO, String.format("Первое число: " + N1));
+// int N2 = Number();
+// log.setLevel(Level.INFO);
+// log.log(Level.INFO, String.format("Второе число: " + N2));
+// char operation = Operation();
+// log.setLevel(Level.INFO);
+// log.log(Level.INFO, String.format("Операция: " + operation));
+// int result = calc(N1, N2, operation);
+// log.setLevel(Level.INFO);
+// log.log(Level.INFO, String.format("Произвел расчет"));
+// System.out.println("Результат = " + result);
+// log.setLevel(Level.INFO);
+// log.log(Level.INFO, String.format("Вывел результат: " + result));
+// }
 
-    public static int calc(int N1, int N2, char operation) {
-        int result;
-        switch (operation) {
-            case '+':
-                result = N1 + N2;
-                break;
-            case '-':
-                result = N1 - N2;
-                break;
-            case '*':
-                result = N1 * N2;
-                break;
-            case '/':
-                result = N1 / N2;
-                break;
-            default:
-                System.out.println("Введены не верные данные, введите один из символов: + - * / ");
-                result = calc(N1, N2, Operation());
-        }
-        return result;
-    }
-}
+// public static int Number() {
+// System.out.println("Введите число:");
+// int N;
+// if (scanner.hasNextInt()) {
+// N = scanner.nextInt();
+// } else {
+// System.out.println("Введены не верные данные, введите только цифры.");
+// scanner.next();
+// N = Number();
+// }
+// return N;
+// }
+
+// public static char Operation() {
+// System.out.println("Введите операцию:");
+// char operation;
+// if (scanner.hasNext()) {
+// operation = scanner.next().charAt(0);
+// } else {
+// System.out.println("Введены не верные данные, введите только цифры.");
+// scanner.next();
+// operation = Operation();
+// }
+// return operation;
+// }
+
+// public static int calc(int N1, int N2, char operation) {
+// int result;
+// switch (operation) {
+// case '+':
+// result = N1 + N2;
+// break;
+// case '-':
+// result = N1 - N2;
+// break;
+// case '*':
+// result = N1 * N2;
+// break;
+// case '/':
+// result = N1 / N2;
+// break;
+// default:
+// System.out.println("Введены не верные данные, введите один из символов: + - *
+// / ");
+// result = calc(N1, N2, Operation());
+// }
+// return result;
+// }
+// }
