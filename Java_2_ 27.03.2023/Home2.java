@@ -9,13 +9,13 @@ import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 import java.io.IOException;
 
-public class Home2 {
+public class Home4_2 {
 public static void main(String[] args) throws IOException {
 
 int[] arr = new int[10];
 Random rand = new Random();
 int tmp = 0;
-Logger log = Logger.getLogger(Home2.class.getName());
+Logger log = Logger.getLogger(Home4_2.class.getName());
 FileHandler fh = new FileHandler("logger.log");
 log.addHandler(fh);
 fh.setFormatter(new SimpleFormatter());
