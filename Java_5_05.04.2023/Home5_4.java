@@ -20,7 +20,7 @@ public class Home5_4 {
 
     // Функция для поиска вариантов расстановки ферзей
     private static boolean findPosition(int row, int[] queens) {
-        if (row == 8) { // Если удалось расставить всех 8 ферзей, вернуть true
+        if (row == 8) { // Если удалось расставить всех 8 ферзей, вернуть то true
             return true;
         }
         for (int col = 0; col < 8; col++) {
